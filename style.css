@@ -34,7 +34,7 @@ body {
 /* Elegant Soft Glow Background */
 .glow-container {
     position: fixed;
-    top: 25%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100vw;
@@ -48,8 +48,8 @@ body {
 }
 
 .gemini-glow {
-    width: 80vw;
-    height: 40vh;
+    width: 70vw;
+    height: 60vh;
     background: radial-gradient(circle, rgba(155, 114, 203, 0.15) 0%, rgba(66, 133, 244, 0.1) 35%, rgba(19, 19, 20, 0) 65%);
     filter: blur(60px);
     border-radius: 50%;
