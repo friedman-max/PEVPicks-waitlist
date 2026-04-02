@@ -17,11 +17,14 @@
         </div>
 
         <div class="form-container">
-            <!-- Form targets a hidden iframe to prevent the page from redirecting -->
+            <!-- Form points directly to your Beehiiv campaign with hidden identifiers -->
             <div id="form-wrapper">
-                <form id="waitlist-form" action="https://embeds.beehiiv.com/c5a7bc84-64ef-4a3a-a9e2-ff3bb6216a8c" method="post" target="hidden_iframe" onsubmit="handleFormSubmit()">
+                <form id="waitlist-form" action="https://embeds.beehiiv.com/subscriptions" method="post" target="hidden_iframe" onsubmit="handleFormSubmit()">
+                    <input type="hidden" name="publication_id" value="cc6fa7f8-8915-4290-8e29-f0b16c2f8903">
+                    <input type="hidden" name="subscribe_form_id" value="c5a7bc84-64ef-4a3a-a9e2-ff3bb6216a8c">
+                    
                     <input type="email" name="email" placeholder="Enter your email address" required>
-                    <button type="submit" id="submit-btn">Join Waitlist</button>
+                    <button type="submit" id="submit-btn" name="submit">Join Waitlist</button>
                 </form>
             </div>
             
