@@ -55,7 +55,9 @@ p {
 
 .form-container {
     width: 100%;
-    max-width: 580px;
+    max-width: 480px;
+    display: flex;
+    justify-content: center;
     position: relative;
 }
 
