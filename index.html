@@ -17,13 +17,37 @@
         </div>
 
         <div class="form-container">
-            <!-- Form points directly to your Beehiiv campaign -->
-            <form id="waitlist-form" action="https://embeds.beehiiv.com/c5a7bc84-64ef-4a3a-a9e2-ff3bb6216a8c" method="post">
-                <input type="email" name="email" placeholder="Enter your email address" required>
-                <button type="submit">Join Waitlist</button>
-            </form>
+            <!-- Form targets a hidden iframe to prevent the page from redirecting -->
+            <div id="form-wrapper">
+                <form id="waitlist-form" action="https://embeds.beehiiv.com/c5a7bc84-64ef-4a3a-a9e2-ff3bb6216a8c" method="post" target="hidden_iframe" onsubmit="handleFormSubmit()">
+                    <input type="email" name="email" placeholder="Enter your email address" required>
+                    <button type="submit" id="submit-btn">Join Waitlist</button>
+                </form>
+            </div>
+            
+            <!-- Success message (hidden by default) -->
+            <div id="success-message" style="display: none;">
+                <p class="success-text">Thanks for joining! Please check your email to confirm.</p>
+            </div>
+            
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
         </div>
     </main>
+
+    <script>
+        function handleFormSubmit() {
+            // Hide the form and show the success message
+            document.getElementById('form-wrapper').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('form-wrapper').style.display = 'none';
+                const successMsg = document.getElementById('success-message');
+                successMsg.style.display = 'block';
+                setTimeout(() => {
+                    successMsg.style.opacity = '1';
+                }, 10);
+            }, 300);
+        }
+    </script>
 </body>
 
 </html>
