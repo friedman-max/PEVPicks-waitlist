@@ -1,12 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --bg-dark: #0f172a;
-    --accent-1: #3b82f6; /* Electric Blue */
-    --accent-2: #10b981; /* Neon Green */
-    --card-bg: rgba(255, 255, 255, 0.96);
-    --text-primary: #0f172a;
-    --text-secondary: #475569;
+    /* Gemini Dark Mode Palette */
+    --bg-dark: #131314;
+    --text-primary: #e3e3e3;
+    --text-secondary: #c4c7c5;
+    
+    /* Gemini Signature Gradient Colors */
+    --gemini-1: #4285f4; /* Blue */
+    --gemini-2: #9b72cb; /* Purple */
+    --gemini-3: #d96570; /* Red/Pink */
 }
 
 * {
@@ -16,158 +19,123 @@
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-primary);
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: auto; /* Allow scrolling if screen is too small */
     position: relative;
-    padding: 2rem 1rem;
+    overflow-x: hidden;
 }
 
-/* Background Animations */
-.background-elements {
+/* Elegant Soft Glow Background */
+.glow-container {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100vw;
     height: 100vh;
-    overflow: hidden;
-    z-index: 0;
     pointer-events: none;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-.blob {
-    position: absolute;
+.gemini-glow {
+    width: 70vw;
+    height: 60vh;
+    background: radial-gradient(circle, rgba(155, 114, 203, 0.12) 0%, rgba(66, 133, 244, 0.08) 35%, rgba(19, 19, 20, 0) 65%);
+    filter: blur(60px);
     border-radius: 50%;
-    filter: blur(90px);
-    opacity: 0.5;
-    animation: float 12s infinite ease-in-out alternate;
+    animation: pulse 8s ease-in-out infinite alternate;
 }
 
-.blob-1 {
-    width: 600px;
-    height: 600px;
-    background: var(--accent-1);
-    top: -200px;
-    left: -200px;
-    animation-delay: 0s;
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    100% { transform: scale(1.1); opacity: 1; }
 }
 
-.blob-2 {
-    width: 500px;
-    height: 500px;
-    background: var(--accent-2);
-    bottom: -150px;
-    right: -150px;
-    animation-delay: -6s;
-}
-
-@keyframes float {
-    0% { transform: translateY(0) scale(1); }
-    100% { transform: translateY(60px) scale(1.1); }
-}
-
-/* Main Container (Glassmorphism) */
-.glass-card {
+/* Main Content Wrapper */
+.content-wrapper {
     position: relative;
     z-index: 1;
-    background: var(--card-bg);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 28px;
-    padding: 3rem 2.5rem;
-    max-width: 650px;
-    width: 100%;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.2) inset;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    animation: slideUp 0.8s ease-out forwards;
-    opacity: 0;
-    transform: translateY(30px);
+    width: 100%;
+    max-width: 720px;
+    padding: 2rem;
+    animation: fadeIn 1s ease-out forwards;
 }
 
-@keyframes slideUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Typography & Content */
 .header-content {
-    margin-bottom: 1.5rem;
-}
-
-.badge {
-    display: inline-block;
-    background: rgba(59, 130, 246, 0.1);
-    color: var(--accent-1);
-    padding: 0.4rem 1.25rem;
-    border-radius: 99px;
-    font-size: 0.875rem;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    margin-bottom: 2rem;
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
+    font-weight: 500;
     line-height: 1.1;
     margin-bottom: 1.25rem;
-    font-weight: 800;
-    color: var(--text-primary);
-    letter-spacing: -1px;
+    letter-spacing: -0.03em;
 }
 
+/* Animated Gradient Text */
 .gradient-text {
-    background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+    background: linear-gradient(90deg, var(--gemini-1), var(--gemini-2), var(--gemini-3), var(--gemini-1));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
+    background-size: 200% auto;
+    animation: shine 5s linear infinite;
+}
+
+@keyframes shine {
+    to { background-position: 200% center; }
 }
 
 p {
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     color: var(--text-secondary);
-    margin-bottom: 1rem;
-    line-height: 1.6;
-    max-width: 90%;
-    margin-inline: auto;
+    max-width: 85%;
+    margin: 0 auto;
+    font-weight: 300;
+    line-height: 1.5;
 }
 
 /* Form Container */
 .form-container {
     width: 100%;
+    position: relative;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 180px; /* Reduced to avoid too much empty space if iframe differs */
-    position: relative;
-    overflow: hidden;
+    background: transparent;
 }
 
+/* Make sure Beehiiv scales down nicely but stays centered */
 .beehiiv-embed {
     width: 100% !important;
 }
 
-/* Responsive Adjustments */
+/* Responsive Tweaks */
 @media (max-width: 640px) {
-    .glass-card {
-        padding: 2.5rem 1.5rem;
-        border-radius: 20px;
+    h1 { 
+        font-size: 2.75rem; 
     }
-    
-    h1 {
-        font-size: 2.5rem;
-    }
-    
-    p {
-        font-size: 1rem;
+    p { 
+        font-size: 1.1rem; 
+        max-width: 100%; 
     }
 }
