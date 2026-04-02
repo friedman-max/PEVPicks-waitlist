@@ -1,15 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
-    /* Gemini Dark Mode Palette */
-    --bg-dark: #131314;
-    --text-primary: #e3e3e3;
-    --text-secondary: #c4c7c5;
-    
-    /* Gemini Signature Gradient Colors */
-    --gemini-1: #4285f4; /* Blue */
-    --gemini-2: #9b72cb; /* Purple */
-    --gemini-3: #d96570; /* Red/Pink */
+    --bg-dark: #121212;
+    --text-primary: #e5e7eb;
+    --text-secondary: #9ca3af;
+    --input-bg: #1c1c1c;
+    --input-border: #2e2e2e;
+    --btn-bg: #008294; /* Teal color matching the image */
 }
 
 * {
@@ -19,7 +16,7 @@
 }
 
 body {
-    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: var(--bg-dark);
     color: var(--text-primary);
     min-height: 100vh;
@@ -27,116 +24,119 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* Elegant Soft Glow Background */
-.glow-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none;
-    z-index: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.gemini-glow {
-    width: 70vw;
-    height: 60vh;
-    background: radial-gradient(circle, rgba(155, 114, 203, 0.15) 0%, rgba(66, 133, 244, 0.1) 35%, rgba(19, 19, 20, 0) 65%);
-    filter: blur(60px);
-    border-radius: 50%;
-    animation: pulse 8s ease-in-out infinite alternate;
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.7; }
-    100% { transform: scale(1.1); opacity: 1; }
-}
-
-/* Main Content Wrapper */
 .content-wrapper {
-    position: relative;
-    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     width: 100%;
-    max-width: 720px;
+    max-width: 800px;
     padding: 2rem;
-    animation: fadeIn 1s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.header-content {
-    margin-bottom: 2rem;
 }
 
 h1 {
-    font-size: 4rem;
-    font-weight: 500;
-    line-height: 1.1;
-    margin-bottom: 1.25rem;
-    letter-spacing: -0.03em;
-}
-
-/* Animated Gradient Text */
-.gradient-text {
-    background: linear-gradient(90deg, var(--gemini-1), var(--gemini-2), var(--gemini-3), var(--gemini-1));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-    background-size: 200% auto;
-    animation: shine 5s linear infinite;
-}
-
-@keyframes shine {
-    to { background-position: 200% center; }
+    font-size: 6rem; /* Large impact font like the image */
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.05em;
+    color: var(--text-primary);
 }
 
 p {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
     color: var(--text-secondary);
-    max-width: 85%;
-    margin: 0 auto;
-    font-weight: 300;
-    line-height: 1.5;
+    margin-bottom: 3.5rem;
+    font-weight: 400;
 }
 
-/* Form Container */
 .form-container {
     width: 100%;
-    position: relative;
+    max-width: 580px;
+}
+
+form {
     display: flex;
-    justify-content: center;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 12px;
+    padding: 8px;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+input {
+    flex-grow: 1;
     background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    padding: 14px 20px;
+    font-size: 1.1rem;
+    font-family: inherit;
 }
 
-/* Make sure Beehiiv scales down nicely but stays centered */
-.beehiiv-embed {
-    width: 100% !important;
+input::placeholder {
+    color: #4b5563;
 }
 
-/* Responsive Tweaks */
-@media (max-width: 640px) {
-    h1 { 
-        font-size: 2.75rem; 
+button {
+    background-color: var(--btn-bg);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+button:hover {
+    background-color: #009cb2;
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 4rem;
     }
-    p { 
-        font-size: 1.1rem; 
-        max-width: 100%; 
+    p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 3rem;
+    }
+    form {
+        flex-direction: column;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        box-shadow: none;
+    }
+    input {
+        width: 100%;
+        background-color: var(--input-bg);
+        border: 1px solid var(--input-border);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        padding: 16px;
+    }
+    button {
+        width: 100%;
+        padding: 16px;
     }
 }
